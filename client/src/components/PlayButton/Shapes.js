@@ -10,7 +10,13 @@ export function Shapes({ isHover, isPress, mouseX, mouseY }) {
   const lightRotateY = useSmoothTransform(mouseX, spring, mouseToLightRotation);
 
   return (
-    <Canvas shadows dpr={[1, 2]} resize={{ scroll: false, offsetSize: true }}>
+    <Canvas
+      shadows
+      dpr={[1, 2]}
+      resize={{ scroll: false, offsetSize: true }}
+      gammaFactor={2.2}
+      linear={true}
+    >
       <Camera mouseX={mouseX} mouseY={mouseY} />
       <MotionConfig transition={transition}>
         <motion.group
@@ -40,6 +46,8 @@ export function Shapes({ isHover, isPress, mouseX, mouseY }) {
 export function Lights() {
   return (
     <>
+      <ambientLight color="#ffffff" intensity={2} />
+      <directionalLight position={[0, 10, 0]} intensity={2} />
       <spotLight color="#61dafb" position={[-10, -10, -10]} intensity={0.2} />
       <spotLight color="#61dafb" position={[-10, 0, 15]} intensity={0.8} />
       <spotLight color="#61dafb" position={[-5, 20, 2]} intensity={0.5} />
@@ -119,7 +127,9 @@ export function Icosahedron() {
 }
 
 export function Material() {
-  return <meshPhongMaterial color="#fff" specular="#61dafb" shininess={10} />;
+  return (
+    <meshPhongMaterial color="#FFD700" specular="#61dafb" shininess={50} />
+  );
 }
 
 function Camera({ mouseX, mouseY, ...props }) {

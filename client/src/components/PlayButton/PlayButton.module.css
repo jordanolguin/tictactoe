@@ -1,4 +1,13 @@
-button {
+.playButtonContainer {
+  background-color: #f4f5fa;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.button {
   --purple: #db07d1;
   --pink: #f2056f;
   --blue: #61dafb;
