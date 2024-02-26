@@ -1,10 +1,9 @@
 import { motion } from "framer-motion-3d";
-import { MotionConfig, spring } from "framer-motion";
+import { MotionConfig } from "framer-motion";
 import { useRef, useLayoutEffect } from "react";
 import { transition } from "./settings";
-import { Canvas, useThree } from "react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { useSmoothTransform } from "./use-smooth-transform";
-import { Camera, Material, Sphere } from "three";
 
 export function Shapes({ isHover, isPress, mouseX, mouseY }) {
   const lightRotateX = useSmoothTransform(mouseY, spring, mouseToLightRotation);
@@ -70,7 +69,7 @@ export function Cone() {
           z: 1.1,
           x: -1.5,
           rotateX: -0.2,
-          rotateY: 0.4,
+          rotateZ: 0.4,
         },
       }}
     >
@@ -120,7 +119,7 @@ export function Icosahedron() {
 }
 
 export function Material() {
-  return <meshPhongMaterial color="fff" specular="#61dafb" shininess={10} />;
+  return <meshPhongMaterial color="#fff" specular="#61dafb" shininess={10} />;
 }
 
 function Camera({ mouseX, mouseY, ...props }) {
@@ -151,7 +150,7 @@ function Camera({ mouseX, mouseY, ...props }) {
 
   useLayoutEffect(() => {
     return cameraX.onChange(() => camera.lookAt(scene.position));
-  }, [cameraX]);
+  }, [cameraX, camera, scene.position]);
 
   return (
     <motion.perspectiveCamera

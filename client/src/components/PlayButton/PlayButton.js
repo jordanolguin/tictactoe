@@ -3,6 +3,7 @@ import { motion, MotionConfig, useMotionValue } from "framer-motion";
 import { Shapes } from "./Shapes";
 import { transition } from "./settings";
 import useMeasure from "react-use-measure";
+import "./PlayButton.css";
 
 const PlayButton = () => {
   const [ref, bounds] = useMeasure({ scroll: false });
@@ -38,6 +39,7 @@ const PlayButton = () => {
         }}
         onTapStart={() => setIsPress(true)}
         onTap={() => setIsPress(false)}
+        onTapCancel={() => setIsPress(false)}
         onPointerMove={(e) => {
           mouseX.set(e.clientX - bounds.x - bounds.width / 2);
           mouseY.set(e.clientY - bounds.y - bounds.height / 2);
@@ -65,6 +67,7 @@ const PlayButton = () => {
         </motion.div>
         <motion.div
           variants={{ hover: { scale: 0.85 }, press: { scale: 1.1 } }}
+          className="label"
         >
           play
         </motion.div>

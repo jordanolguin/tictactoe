@@ -1,11 +1,13 @@
 import "./App.css";
 import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
+import PlayButton from "./components/PlayButton/PlayButton";
 
 function App() {
   return (
     <div className="App">
-      <h1>Tic Tac Toe</h1>
+      <h1>tic tac toe</h1>
       <LoadingScreen />
+      <PlayButton />
     </div>
   );
 }
