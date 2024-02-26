@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import "./LoadingScreen.css";
 
 const LoadingScreen = () => {
   const draw = {
