@@ -27,9 +27,9 @@ const PlayingField = () => {
     >
       <motion.line
         x1="200"
-        y1="100"
+        y1="50"
         x2="200"
-        y2="500"
+        y2="550"
         stroke="#000"
         strokeWidth="5"
         variants={draw}
@@ -37,18 +37,18 @@ const PlayingField = () => {
       />
       <motion.line
         x1="400"
-        y1="100"
+        y1="50"
         x2="400"
-        y2="500"
+        y2="550"
         stroke="#000"
         strokeWidth="5"
         variants={draw}
         custom={1.5}
       />
       <motion.line
-        x1="100"
+        x1="50"
         y1="200"
-        x2="500"
+        x2="550"
         y2="200"
         stroke="#000"
         strokeWidth="5"
@@ -56,9 +56,9 @@ const PlayingField = () => {
         custom={2}
       />
       <motion.line
-        x1="100"
+        x1="50"
         y1="400"
-        x2="500"
+        x2="550"
         y2="400"
         stroke="#000"
         strokeWidth="5"
