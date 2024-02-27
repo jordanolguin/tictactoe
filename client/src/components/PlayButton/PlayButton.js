@@ -1,4 +1,5 @@
 import { Suspense, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, MotionConfig, useMotionValue } from "framer-motion";
 import { Shapes } from "./Shapes";
 import { transition } from "./settings";
@@ -11,6 +12,8 @@ const PlayButton = () => {
   const [isPress, setIsPress] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  const navigate = useNavigate();
 
   const resetMousePosition = () => {
     mouseX.set(0);
@@ -39,7 +42,10 @@ const PlayButton = () => {
             setIsHover(false);
           }}
           onTapStart={() => setIsPress(true)}
-          onTap={() => setIsPress(false)}
+          onTap={() => {
+            setIsPress(false);
+            navigate("/playing-field");
+          }}
           onTapCancel={() => setIsPress(false)}
           onPointerMove={(e) => {
             mouseX.set(e.clientX - bounds.x - bounds.width / 2);

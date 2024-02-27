@@ -1,17 +1,34 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import * as React from "react";
+import { AnimatePresence } from "framer-motion";
+import {
+  BrowserRouter as Router,
+  useLocation,
+  useRoutes,
+} from "react-router-dom";
 import Home from "./pages/Home";
+import PlayingField from "./components/PlayingField/PlayingField";
 
-function App() {
+function AppRoutes() {
+  const location = useLocation();
+  const routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/playing-field", element: <PlayingField /> },
+  ]);
+
+  return (
+    <AnimatePresence mode="wait">
+      {routes && React.cloneElement(routes, { key: location.pathname })}
+    </AnimatePresence>
+  );
+}
+
+export default function App() {
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <AppRoutes />
       </Router>
     </div>
   );
 }
-
-export default App;
