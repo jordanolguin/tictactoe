@@ -1,13 +1,15 @@
 import "./App.css";
-import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
-import PlayButton from "./components/PlayButton/PlayButton";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
-      <h1>tic tac toe</h1>
-      <LoadingScreen />
-      <PlayButton />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
