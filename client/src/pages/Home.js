@@ -14,20 +14,40 @@ const itemVariants = {
   visible,
 };
 
+const pageVariants = {
+  initial: { opacity: 0 },
+  in: { opacity: 1 },
+  out: { opacity: 0 },
+};
+
+const pageTransition = {
+  type: "tween",
+  ease: "anticipate",
+  duration: 0.5,
+};
+
 function Home() {
   return (
     <motion.div
-      className="App"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
     >
-      <motion.h1 variants={itemVariants}>tic tac toe</motion.h1>
-      <motion.div variants={itemVariants}>
-        <LoadingScreen />
-      </motion.div>
-      <motion.div variants={itemVariants}>
-        <PlayButton />
+      <motion.div
+        className="App"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <motion.h1 variants={itemVariants}>tic tac toe</motion.h1>
+        <motion.div variants={itemVariants}>
+          <LoadingScreen />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <PlayButton />
+        </motion.div>
       </motion.div>
     </motion.div>
   );
