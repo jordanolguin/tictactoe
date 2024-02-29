@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PlayingField from "../components/PlayingField/PlayingField";
 import BackButton from "../components/BackButton/BackButton";
+import TurnIndicator from "../components/TurnIndicator/TurnIndicator";
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -25,6 +27,17 @@ const itemVariants = {
 };
 
 function GamePlay() {
+  const [currentPlayer, setCurrentPlayer] = useState("X");
+  const [moveCount, setMoveCount] = useState(0);
+
+  useEffect(() => {
+    setCurrentPlayer(moveCount % 2 === 0 ? "X" : "O");
+  }, [moveCount]);
+
+  const handleMove = () => {
+    setMoveCount((prevCount) => prevCount + 1);
+  };
+
   return (
     <motion.div
       initial="initial"
@@ -45,9 +58,20 @@ function GamePlay() {
 
         <motion.h1 variants={itemVariants}>Tic Tac Toe</motion.h1>
 
-        <motion.div variants={itemVariants}>
-          <PlayingField />
-        </motion.div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <motion.div variants={itemVariants} style={{ marginRight: "20px" }}>
+            <TurnIndicator currentPlayer={currentPlayer} />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <PlayingField onMove={handleMove} />
+          </motion.div>
+        </div>
       </motion.div>
     </motion.div>
   );

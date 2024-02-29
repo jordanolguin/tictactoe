@@ -2,8 +2,15 @@ import { motion } from "framer-motion";
 import useGameLogic from "./Play";
 import "./PlayingField.css";
 
-const PlayingField = () => {
+const PlayingField = ({ onMove }) => {
   const { board, handleClick } = useGameLogic();
+
+  const handlePlayerMove = (i) => {
+    if (!board[i]) {
+      handleClick(i);
+      onMove();
+    }
+  };
 
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
@@ -114,7 +121,7 @@ const PlayingField = () => {
           width="200"
           height="200"
           fill="transparent"
-          onClick={() => handleClick(index)}
+          onClick={() => handlePlayerMove(index)}
           style={{ cursor: space ? "not-allowed" : "pointer" }}
         />
       ))}
