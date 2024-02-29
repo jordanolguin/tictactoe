@@ -7,13 +7,13 @@ import {
   useRoutes,
 } from "react-router-dom";
 import Home from "./pages/Home";
-import PlayingField from "./components/PlayingField/PlayingField";
+import GamePlay from "./pages/GamePlay";
 
 function AppRoutes() {
   const location = useLocation();
   const routes = useRoutes([
     { path: "/", element: <Home /> },
-    { path: "/playing-field", element: <PlayingField /> },
+    { path: "/play", element: <GamePlay /> },
   ]);
 
   return (

@@ -44,7 +44,7 @@ const PlayButton = () => {
           onTapStart={() => setIsPress(true)}
           onTap={() => {
             setIsPress(false);
-            navigate("/playing-field");
+            navigate("/play");
           }}
           onTapCancel={() => setIsPress(false)}
           onPointerMove={(e) => {
