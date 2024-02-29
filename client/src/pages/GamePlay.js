@@ -52,26 +52,16 @@ function GamePlay() {
         animate="visible"
         variants={containerVariants}
       >
+        <motion.h1 variants={itemVariants}>tap a square to play!</motion.h1>
+        <motion.div variants={itemVariants}>
+          <PlayingField onMove={handleMove} />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <TurnIndicator currentPlayer={currentPlayer} />
+        </motion.div>
         <motion.div variants={itemVariants}>
           <BackButton />
         </motion.div>
-
-        <motion.h1 variants={itemVariants}>Tic Tac Toe</motion.h1>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <motion.div variants={itemVariants} style={{ marginRight: "20px" }}>
-            <TurnIndicator currentPlayer={currentPlayer} />
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <PlayingField onMove={handleMove} />
-          </motion.div>
-        </div>
       </motion.div>
     </motion.div>
   );

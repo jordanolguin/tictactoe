@@ -20,7 +20,6 @@ const TurnIndicator = () => {
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.5 }}
     >
-      <h2>Tap a square to play!</h2>
       <p>{message}</p>
     </motion.div>
   );
