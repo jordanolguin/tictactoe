@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
-import useGameLogic from "./Play";
+import { useGame } from "../../contexts/GameContext";
 import "./PlayingField.css";
 
-const PlayingField = ({ onMove }) => {
-  const { board, handleClick } = useGameLogic();
+const PlayingField = () => {
+  const { board, handleClick } = useGame();
 
   const handlePlayerMove = (i) => {
     if (!board[i]) {
       handleClick(i);
-      onMove();
     }
   };
 

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
+
+const GameContext = createContext();
 
 const initialBoard = Array(9).fill(null);
-
 const winCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -13,7 +14,11 @@ const winCombos = [
   [2, 4, 6],
 ];
 
-export default function useGameLogic() {
+export function useGame() {
+  return useContext(GameContext);
+}
+
+export const GameProvider = ({ children }) => {
   const [board, setBoard] = useState(initialBoard);
   const [isXTurn, setIsXTurn] = useState(true);
   const [winner, setWinner] = useState(null);
@@ -53,5 +58,7 @@ export default function useGameLogic() {
     setIsDraw(false);
   };
 
-  return { board, isXTurn, winner, isDraw, handleClick, resetGame };
-}
+  const value = { board, isXTurn, winner, isDraw, handleClick, resetGame };
+
+  return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
+};

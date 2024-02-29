@@ -8,12 +8,20 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import GamePlay from "./pages/GamePlay";
+import { GameProvider } from "./contexts/GameContext";
 
 function AppRoutes() {
   const location = useLocation();
   const routes = useRoutes([
     { path: "/", element: <Home /> },
-    { path: "/play", element: <GamePlay /> },
+    {
+      path: "/play",
+      element: (
+        <GameProvider>
+          <GamePlay />
+        </GameProvider>
+      ),
+    },
   ]);
 
   return (
