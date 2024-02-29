@@ -1,6 +1,18 @@
 import { motion } from "framer-motion";
+import { useGame } from "../../contexts/GameContext";
 
-const TurnIndicator = ({ currentPlayer }) => {
+const TurnIndicator = () => {
+  const { isXTurn, winner, isDraw } = useGame();
+
+  let message;
+  if (winner) {
+    message = `${winner} wins!`;
+  } else if (isDraw) {
+    message = "It's a draw!";
+  } else {
+    message = `${isXTurn ? "X" : "O"}'s turn`;
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
@@ -9,7 +21,7 @@ const TurnIndicator = ({ currentPlayer }) => {
       transition={{ duration: 0.5 }}
     >
       <h2>Tap a square to play!</h2>
-      <p>{currentPlayer}'s turn</p>
+      <p>{message}</p>
     </motion.div>
   );
 };
