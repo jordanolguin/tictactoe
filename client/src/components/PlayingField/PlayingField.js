@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import BackButton from "../BackButton/BackButton";
 import "./PlayingField.css";
 
 const PlayingField = () => {
+  const [clickedSpaces, setClickedSpaces] = useState(Array(9).fill(false));
+
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: (i) => {
@@ -16,6 +19,20 @@ const PlayingField = () => {
         },
       };
     },
+  };
+
+  const handleClick = (i) => {
+    const updatedSpaces = [...clickedSpaces];
+    updatedSpaces[i] = true;
+    setClickedSpaces(updatedSpaces);
+  };
+
+  const calculateCenter = (i) => {
+    const row = Math.floor(i / 3);
+    const col = i % 3;
+    const x = col * 200 + 100;
+    const y = row * 200 + 100;
+    return { x, y };
   };
 
   const pageVariants = {
@@ -85,6 +102,33 @@ const PlayingField = () => {
           variants={draw}
           custom={2.5}
         />
+        {clickedSpaces.map((_, index) => (
+          <rect
+            key={index}
+            x={(index % 3) * 200}
+            y={Math.floor(index / 3) * 200}
+            width="200"
+            height="200"
+            fill="transparent"
+            onClick={() => handleClick(index)}
+          />
+        ))}
+
+        {clickedSpaces.map((clicked, index) =>
+          clicked ? (
+            <motion.circle
+              key={index}
+              cx={calculateCenter(index).x}
+              cy={calculateCenter(index).y}
+              r="80"
+              stroke="#ff0055"
+              variants={draw}
+              initial="hidden"
+              animate="visible"
+              custom={1}
+            />
+          ) : null
+        )}
       </motion.svg>
       <BackButton />
     </motion.div>
