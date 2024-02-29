@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
+import useGameLogic from "./Play";
 import BackButton from "../BackButton/BackButton";
 import "./PlayingField.css";
 
 const PlayingField = () => {
-  const [clickedSpaces, setClickedSpaces] = useState(Array(9).fill(false));
+  const { board, handleClick } = useGameLogic();
 
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
@@ -19,12 +19,6 @@ const PlayingField = () => {
         },
       };
     },
-  };
-
-  const handleClick = (i) => {
-    const updatedSpaces = [...clickedSpaces];
-    updatedSpaces[i] = true;
-    setClickedSpaces(updatedSpaces);
   };
 
   const calculateCenter = (i) => {
@@ -45,6 +39,34 @@ const PlayingField = () => {
     type: "tween",
     ease: "anticipate",
     duration: 0.5,
+  };
+
+  const renderX = (i) => {
+    const { x, y } = calculateCenter(i);
+    return (
+      <>
+        <motion.line
+          x1={x - 40}
+          y1={y - 40}
+          x2={x + 40}
+          y2={y + 40}
+          stroke="#00cc88"
+          strokeWidth="5"
+          variants={draw}
+          custom={2}
+        />
+        <motion.line
+          x1={x + 40}
+          y1={y - 40}
+          x2={x - 40}
+          y2={y + 40}
+          stroke="#00cc88"
+          strokeWidth="5"
+          variants={draw}
+          custom={2}
+        />
+      </>
+    );
   };
 
   return (
@@ -102,7 +124,8 @@ const PlayingField = () => {
           variants={draw}
           custom={2.5}
         />
-        {clickedSpaces.map((_, index) => (
+
+        {board.map((space, index) => (
           <rect
             key={index}
             x={(index % 3) * 200}
@@ -111,24 +134,31 @@ const PlayingField = () => {
             height="200"
             fill="transparent"
             onClick={() => handleClick(index)}
+            style={{ cursor: space ? "not-allowed" : "pointer" }}
           />
         ))}
 
-        {clickedSpaces.map((clicked, index) =>
-          clicked ? (
-            <motion.circle
-              key={index}
-              cx={calculateCenter(index).x}
-              cy={calculateCenter(index).y}
-              r="80"
-              stroke="#ff0055"
-              variants={draw}
-              initial="hidden"
-              animate="visible"
-              custom={1}
-            />
-          ) : null
-        )}
+        {board.map((space, index) => {
+          if (space === "X") {
+            return renderX(index);
+          } else if (space === "O") {
+            const { x, y } = calculateCenter(index);
+            return (
+              <motion.circle
+                key={index}
+                cx={x}
+                cy={y}
+                r="80"
+                stroke="#ff0055"
+                variants={draw}
+                initial="hidden"
+                animate="visible"
+                custom={1}
+              />
+            );
+          }
+          return null;
+        })}
       </motion.svg>
       <BackButton />
     </motion.div>
