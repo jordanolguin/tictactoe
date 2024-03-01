@@ -3,7 +3,7 @@ import { useGame } from "../../contexts/GameContext";
 import "./PlayingField.css";
 
 const PlayingField = () => {
-  const { board, handleClick } = useGame();
+  const { board, handleClick, winningCombo } = useGame();
 
   const handlePlayerMove = (i) => {
     if (!board[i]) {
@@ -59,6 +59,46 @@ const PlayingField = () => {
           custom={2.5}
         />
       </>
+    );
+  };
+
+  const renderWinningLine = () => {
+    if (!winningCombo) return null;
+
+    const [startPos, , endPos] = winningCombo.map((i) => calculateCenter(i));
+
+    const dx = endPos.x - startPos.x;
+    const dy = endPos.y - startPos.y;
+
+    const length = Math.sqrt(dx * dx + dy * dy);
+    const unitX = dx / length;
+    const unitY = dy / length;
+
+    const extension = 85;
+    const extendedStartX = startPos.x - unitX * extension;
+    const extendedStartY = startPos.y - unitY * extension;
+    const extendedEndX = endPos.x + unitX * extension;
+    const extendedEndY = endPos.y + unitY * extension;
+
+    return (
+      <motion.line
+        x1={extendedStartX}
+        y1={extendedStartY}
+        x2={extendedEndX}
+        y2={extendedEndY}
+        stroke="gold"
+        strokeWidth="15"
+        variants={{
+          hidden: { pathLength: 0, opacity: 0 },
+          visible: {
+            pathLength: 1,
+            opacity: 1,
+            transition: { delay: 0.5, duration: 1.5, bounce: 0 },
+          },
+        }}
+        initial="hidden"
+        animate="visible"
+      />
     );
   };
 
@@ -146,6 +186,7 @@ const PlayingField = () => {
         }
         return null;
       })}
+      {renderWinningLine()}
     </motion.svg>
   );
 };
