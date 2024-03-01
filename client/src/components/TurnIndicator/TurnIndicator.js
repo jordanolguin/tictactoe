@@ -35,7 +35,7 @@ const TurnIndicator = () => {
           ? `Winner: ${winner}`
           : isDraw
           ? "It's a draw!"
-          : "Current turn:"}
+          : "current move:"}
       </h3>
       <svg
         width="120"
