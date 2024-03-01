@@ -23,28 +23,30 @@ export const GameProvider = ({ children }) => {
   const [isXTurn, setIsXTurn] = useState(true);
   const [winner, setWinner] = useState(null);
   const [isDraw, setIsDraw] = useState(false);
+  const [winningCombo, setWinningCombo] = useState(null);
 
   const handleClick = (i) => {
-    if (board[i] || winner) return;
+    if (board[i] || winner || isDraw) return;
 
     const newBoard = [...board];
-    newBoard[i] = isXTurn ? "X" : "O";
+    const currentPlayer = isXTurn ? "X" : "O";
+    newBoard[i] = currentPlayer;
     setBoard(newBoard);
 
-    const hasWinner = checkWin(newBoard);
-    if (hasWinner) {
-      setWinner(isXTurn ? "X" : "O");
+    if (checkWin(newBoard)) {
+      setWinner(currentPlayer);
     } else if (newBoard.every((space) => space !== null)) {
       setIsDraw(true);
+    } else {
+      setIsXTurn(!isXTurn);
     }
-
-    setIsXTurn(!isXTurn);
   };
 
   const checkWin = (board) => {
     for (let i = 0; i < winCombos.length; i++) {
       const [a, b, c] = winCombos[i];
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        setWinningCombo(winCombos[i]);
         return true;
       }
     }
@@ -56,9 +58,18 @@ export const GameProvider = ({ children }) => {
     setIsXTurn(true);
     setWinner(null);
     setIsDraw(false);
+    setWinningCombo(null);
   };
 
-  const value = { board, isXTurn, winner, isDraw, handleClick, resetGame };
+  const value = {
+    board,
+    isXTurn,
+    winner,
+    isDraw,
+    handleClick,
+    resetGame,
+    winningCombo,
+  };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };
