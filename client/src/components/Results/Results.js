@@ -1,9 +1,26 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { useGame } from "../../contexts/GameContext";
+import PlayAgain from "../PlayAgain/PlayAgain";
 import styles from "./Results.module.css";
 
 const Results = () => {
-  const { winner, isDraw } = useGame();
+  const { winner, isDraw, resetGame } = useGame();
+  const [showPlayAgain, setShowPlayAgain] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPlayAgain(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (showPlayAgain) {
+    return <PlayAgain onRefresh={resetGame} onGoHome={() => navigate("/")} />;
+  }
 
   const svgVariants = {
     hidden: { opacity: 0 },
@@ -95,7 +112,7 @@ const Results = () => {
 
     return (
       <>
-        <h2 className={styles.message}>{message}</h2>
+        <h1 className={styles.message}>{message}</h1>
         {content}
       </>
     );

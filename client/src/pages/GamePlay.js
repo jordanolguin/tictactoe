@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import PlayingField from "../components/PlayingField/PlayingField";
 import BackButton from "../components/BackButton/BackButton";
 import TurnIndicator from "../components/TurnIndicator/TurnIndicator";
 import Results from "../components/Results/Results";
-import PlayAgain from "../components/PlayAgain/PlayAgain";
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -31,29 +29,7 @@ const itemVariants = {
 };
 
 function GamePlay() {
-  const navigate = useNavigate();
-  const { winner, isDraw, resetGame } = useGame();
-  const [showPlayAgain, setShowPlayAgain] = useState(false);
-
-  useEffect(() => {
-    if (winner || isDraw) {
-      const timer = setTimeout(() => {
-        setShowPlayAgain(true);
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [winner, isDraw]);
-
-  const handlePlayAgain = () => {
-    resetGame();
-    setShowPlayAgain(false);
-  };
-
-  const handleGoHome = () => {
-    navigate("/");
-    setShowPlayAgain(false);
-  };
+  const { winner, isDraw } = useGame();
 
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [moveCount, setMoveCount] = useState(0);
@@ -91,11 +67,6 @@ function GamePlay() {
         ) : (
           <motion.div variants={itemVariants}>
             <TurnIndicator currentPlayer={currentPlayer} />
-          </motion.div>
-        )}
-        {showPlayAgain && (
-          <motion.div variants={itemVariants}>
-            <PlayAgain onRefresh={handlePlayAgain} onGoHome={handleGoHome} />
           </motion.div>
         )}
         <motion.div variants={itemVariants}>
