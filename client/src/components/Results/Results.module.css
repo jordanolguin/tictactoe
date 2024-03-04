@@ -1,8 +1,9 @@
 .results {
   width: 600px;
-  height: 400px;
+  height: 300px;
   border-radius: 20px;
   background-color: #fafafa;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  margin: auto;
+  margin: 20px auto;
+  padding: 20px;
 }

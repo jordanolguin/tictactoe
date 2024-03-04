@@ -60,10 +60,15 @@ function GamePlay() {
         <motion.div variants={itemVariants}>
           <PlayingField onMove={handleMove} />
         </motion.div>
-        <motion.div variants={itemVariants}>
-          <TurnIndicator currentPlayer={currentPlayer} />
-        </motion.div>
-        {(winner || isDraw) && <Results />}
+        {winner || isDraw ? (
+          <motion.div variants={itemVariants}>
+            <Results />
+          </motion.div>
+        ) : (
+          <motion.div variants={itemVariants}>
+            <TurnIndicator currentPlayer={currentPlayer} />
+          </motion.div>
+        )}
         <motion.div variants={itemVariants}>
           <BackButton />
         </motion.div>

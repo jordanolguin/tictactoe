@@ -14,49 +14,76 @@ const Results = () => {
   };
 
   const renderContent = () => {
+    let content;
+    let message;
+
     if (winner) {
       const strokeColor = winner === "X" ? "#00cc88" : "#ff0055";
-      return winner === "X" ? (
-        <svg
-          width="120"
-          height="120"
-          viewBox="0 0 200 200"
-          style={{ overflow: "visible" }}
-        >
-          <motion.line
-            x1="50"
-            y1="50"
-            x2="150"
-            y2="150"
-            stroke={strokeColor}
-            variants={svgVariants}
-            initial="hidden"
-            animate="visible"
-          />
-          <motion.line
-            x1="150"
-            y1="50"
-            x2="50"
-            y2="150"
-            stroke={strokeColor}
-            variants={svgVariants}
-            initial="hidden"
-            animate="visible"
-          />
-        </svg>
-      ) : (
-        <svg
-          width="120"
-          height="120"
-          viewBox="0 0 200 200"
-          style={{ overflow: "visible" }}
-        >
-          <motion.circle
-            cx="100"
-            cy="100"
-            r="50"
-            stroke={strokeColor}
-            strokeWidth="5"
+      message = `${winner} Wins!`;
+
+      content =
+        winner === "X" ? (
+          <svg
+            width="200"
+            height="200"
+            viewBox="0 0 200 200"
+            style={{ overflow: "visible" }}
+          >
+            <motion.line
+              x1="50"
+              y1="50"
+              x2="150"
+              y2="150"
+              stroke={strokeColor}
+              strokeWidth="10"
+              variants={svgVariants}
+              initial="hidden"
+              animate="visible"
+            />
+            <motion.line
+              x1="150"
+              y1="50"
+              x2="50"
+              y2="150"
+              stroke={strokeColor}
+              strokeWidth="10"
+              variants={svgVariants}
+              initial="hidden"
+              animate="visible"
+            />
+          </svg>
+        ) : (
+          <svg
+            width="200"
+            height="200"
+            viewBox="0 0 200 200"
+            style={{ overflow: "visible" }}
+          >
+            <motion.circle
+              cx="100"
+              cy="100"
+              r="75"
+              stroke={strokeColor}
+              strokeWidth="10"
+              fill="none"
+              variants={svgVariants}
+              initial="hidden"
+              animate="visible"
+            />
+          </svg>
+        );
+    } else if (isDraw) {
+      message = "It's a draw!";
+      content = (
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <motion.rect
+            width="150"
+            height="150"
+            x="25"
+            y="25"
+            rx="20"
+            stroke="#0099ff"
+            strokeWidth="10"
             fill="none"
             variants={svgVariants}
             initial="hidden"
@@ -64,25 +91,14 @@ const Results = () => {
           />
         </svg>
       );
-    } else if (isDraw) {
-      return (
-        <svg width="200" height="200" viewBox="0 0 560 170">
-          <motion.rect
-            width="140"
-            height="140"
-            x="30"
-            y="15"
-            rx="20"
-            stroke="#0099ff"
-            strokeWidth="10"
-            variants={svgVariants}
-            initial="hidden"
-            animate="visible"
-          />
-        </svg>
-      );
     }
-    return null;
+
+    return (
+      <>
+        <h2 className={styles.message}>{message}</h2>
+        {content}
+      </>
+    );
   };
 
   return (
