@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import styles from "./PlayAgain.module.css";
 
-const PlayAgain = () => {
+const PlayAgain = ({ onRefresh, onGoHome }) => {
   const x = useMotionValue(0);
   const xInput = [-100, 0, 100];
 
@@ -28,6 +28,13 @@ const PlayAgain = () => {
         style={{ x }}
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
+        onDragEnd={(e, info) => {
+          if (info.offset.x > 100) {
+            onRefresh && onRefresh();
+          } else if (info.offset.x < -100) {
+            onGoHome && onGoHome();
+          }
+        }}
       >
         <svg className={styles.progressIcon} viewBox="0 0 50 50">
           <motion.path
