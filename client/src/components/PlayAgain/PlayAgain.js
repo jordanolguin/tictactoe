@@ -86,6 +86,9 @@ const PlayAgain = ({ onRefresh, onGoHome }) => {
             />
           </svg>
         </motion.div>
+        <motion.p className={styles.p}>
+          drag left for NO, right for YES
+        </motion.p>
       </motion.div>
     </motion.div>
   );
