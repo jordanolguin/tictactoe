@@ -1,9 +1,11 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
+import { useRef } from "react";
 import styles from "./PlayAgain.module.css";
 
 const PlayAgain = ({ onRefresh, onGoHome }) => {
   const x = useMotionValue(0);
   const xInput = [-100, 0, 100];
+  const constraintsRef = useRef(null);
 
   const background = useTransform(x, xInput, [
     "linear-gradient(180deg, #ff008c 0%, rgb(211, 9, 255) 100%)",
@@ -37,13 +39,17 @@ const PlayAgain = ({ onRefresh, onGoHome }) => {
         },
       }}
     >
-      <motion.div className={styles.playAgainContainer} style={{ background }}>
+      <motion.div
+        className={styles.playAgainContainer}
+        style={{ background }}
+        ref={constraintsRef}
+      >
         <motion.h1>play again?</motion.h1>
         <motion.div
           className={styles.box}
           style={{ x }}
           drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
+          dragConstraints={constraintsRef}
           onDragEnd={(e, info) => {
             if (info.offset.x > 100) {
               onRefresh && onRefresh();
