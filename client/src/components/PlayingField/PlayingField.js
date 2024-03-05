@@ -14,7 +14,7 @@ const PlayingField = () => {
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: (i) => {
-      const delay = 1 + i * 0.5;
+      const delay = 0.1 + i * 0.25;
       return {
         pathLength: 1,
         opacity: 1,
