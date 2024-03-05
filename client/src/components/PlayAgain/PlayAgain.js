@@ -22,7 +22,21 @@ const PlayAgain = ({ onRefresh, onGoHome }) => {
   const crossPathB = useTransform(x, [-50, -100], [0, 1]);
 
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      className={styles.wrapper}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+        scale: {
+          type: "spring",
+          damping: 5,
+          stiffness: 100,
+          restDelta: 0.001,
+        },
+      }}
+    >
       <motion.div className={styles.playAgainContainer} style={{ background }}>
         <motion.h1>play again?</motion.h1>
         <motion.div
@@ -73,7 +87,7 @@ const PlayAgain = ({ onRefresh, onGoHome }) => {
           </svg>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -16,10 +16,18 @@ const Results = () => {
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [winner, isDraw]);
+
+  const handleRefresh = () => {
+    resetGame();
+  };
+
+  const handleGoHome = () => {
+    navigate("/");
+  };
 
   if (showPlayAgain) {
-    return <PlayAgain onRefresh={resetGame} onGoHome={() => navigate("/")} />;
+    return <PlayAgain onRefresh={handleRefresh} onGoHome={handleGoHome} />;
   }
 
   const svgVariants = {
