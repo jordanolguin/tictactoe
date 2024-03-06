@@ -1,10 +1,21 @@
+import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import { motion } from "framer-motion/three";
-import { degreesToRadians } from "popmotion";
+import { useSpring, a } from "@react-spring/three";
 
 export function RotatingStarIcon() {
   const { nodes } = useGLTF("/star-icon.glb");
+
+  const { rotation, scale } = useSpring({
+    loop: true,
+    to: async (next) => {
+      await next({ rotation: [0, 0, 2 * Math.PI] });
+      await next({ rotation: [0, 0, 0], immediate: true });
+    },
+    from: { rotation: [0, 0, 0] },
+    config: { duration: 5000 },
+    scale: 1.3,
+  });
 
   return (
     <Canvas
@@ -12,37 +23,30 @@ export function RotatingStarIcon() {
       dpr={[1, 2]}
       camera={{ position: [0, 0, 5.5], fov: 45 }}
     >
-      {lights.map(([x, y, z, intensity], i) => (
-        <pointLight
-          key={i}
-          intensity={intensity}
-          position={[x / 8, y / 8, z / 8]}
-          color="#fff"
-        />
-      ))}
-      <group dispose={null}>
-        <motion.mesh
-          geometry={nodes.Star.geometry}
-          rotation={[Math.PI / 2, 0, 0]}
-          animate={{ rotateZ: degreesToRadians(360) }}
-          transition={{
-            rotateZ: { duration: 5, ease: "linear", repeat: Infinity },
-          }}
-          scale={1}
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[-2, 5, 2]} intensity={1} />
+      <a.group dispose={null}>
+        <a.mesh
+          geometry={nodes.Cylinder.geometry}
+          rotation={rotation}
+          scale={scale}
         >
           <meshPhongMaterial
             color="#ffdd00"
             emissive="#ff9500"
             specular="#fff"
-            shininess="100"
+            shininess={100}
           />
-        </motion.mesh>
-      </group>
+        </a.mesh>
+      </a.group>
     </Canvas>
   );
 }
 
-const lights = [
-  [2, 1, 4, 1],
-  [8, 0, 4, 1],
-];
+export default function RotatingStarIconWrapper() {
+  return (
+    <React.Suspense fallback={null}>
+      <RotatingStarIcon />
+    </React.Suspense>
+  );
+}

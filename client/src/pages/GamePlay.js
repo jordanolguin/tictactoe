@@ -5,6 +5,7 @@ import PlayingField from "../components/PlayingField/PlayingField";
 import BackButton from "../components/BackButton/BackButton";
 import TurnIndicator from "../components/TurnIndicator/TurnIndicator";
 import Results from "../components/Results/Results";
+import RotatingStarIcon from "../components/RotatingStarIcon/RotatingStarIcon";
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -57,6 +58,9 @@ function GamePlay() {
         variants={containerVariants}
       >
         <motion.h1 variants={itemVariants}>tap a square to play!</motion.h1>
+        <motion.div variants={itemVariants}>
+          <RotatingStarIcon />
+        </motion.div>
         <motion.div variants={itemVariants}>
           <PlayingField onMove={handleMove} />
         </motion.div>
