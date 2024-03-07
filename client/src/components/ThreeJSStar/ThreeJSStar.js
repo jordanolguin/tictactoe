@@ -3,7 +3,7 @@ import * as THREE from "three";
 import Stats from "stats.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-const ThreeJSStarExample = () => {
+const ThreeJSStar = () => {
   const containerRef = useRef();
 
   useEffect(() => {
@@ -18,13 +18,15 @@ const ThreeJSStarExample = () => {
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    containerRef.current.appendChild(renderer.domElement);
+
+    const currentContainerRef = containerRef.current;
+    currentContainerRef.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.update();
 
     const stats = new Stats();
-    containerRef.current.appendChild(stats.dom);
+    currentContainerRef.appendChild(stats.dom);
 
     const shape = new THREE.Shape();
     const outerRadius = 1;
@@ -94,11 +96,13 @@ const ThreeJSStarExample = () => {
 
     return () => {
       window.removeEventListener("resize", onWindowResize);
-      containerRef.current.removeChild(renderer.domElement);
+      if (currentContainerRef) {
+        currentContainerRef.removeChild(renderer.domElement);
+      }
     };
   }, []);
 
   return <div ref={containerRef} />;
 };
 
-export default ThreeJSStarExample;
+export default ThreeJSStar;

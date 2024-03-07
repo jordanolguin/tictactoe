@@ -5,7 +5,6 @@ import PlayingField from "../components/PlayingField/PlayingField";
 import BackButton from "../components/BackButton/BackButton";
 import TurnIndicator from "../components/TurnIndicator/TurnIndicator";
 import Results from "../components/Results/Results";
-import ThreeJSStarExample from "../components/ThreeJSStarExample/ThreeJSStarExample";
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -58,9 +57,6 @@ function GamePlay() {
         variants={containerVariants}
       >
         <motion.h1 variants={itemVariants}>tap a square to play!</motion.h1>
-        <motion.div variants={itemVariants}>
-          <ThreeJSStarExample />
-        </motion.div>
         <motion.div variants={itemVariants}>
           <PlayingField onMove={handleMove} />
         </motion.div>
