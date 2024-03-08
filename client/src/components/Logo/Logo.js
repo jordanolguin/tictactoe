@@ -55,6 +55,19 @@ const Logo = () => {
       scene.add(textMesh);
     });
 
+    const torusGeometry1 = new THREE.TorusGeometry(150, 10, 32, 100, Math.PI);
+    const torusGeometry2 = new THREE.TorusGeometry(150, 10, 32, 100, Math.PI);
+    const torusMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+    const torus1 = new THREE.Mesh(torusGeometry1, torusMaterial);
+    const torus2 = new THREE.Mesh(torusGeometry2, torusMaterial);
+
+    torus1.position.y = -75;
+    torus2.position.y = 75;
+    torus1.rotation.x = Math.PI / 2;
+    torus2.rotation.x = Math.PI / 2;
+
+    scene.add(torus1, torus2);
+
     const animate = () => {
       requestAnimationFrame(animate);
 
