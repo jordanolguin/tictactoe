@@ -35,8 +35,8 @@ const Logo = () => {
         height: 5,
         curveSegments: 12,
         bevelEnabled: true,
-        bevelThickness: 10,
-        bevelSize: 10,
+        bevelThickness: 8,
+        bevelSize: 5,
         bevelOffset: 0,
         bevelSegments: 10,
       });
@@ -55,18 +55,22 @@ const Logo = () => {
       scene.add(textMesh);
     });
 
-    const torusGeometry1 = new THREE.TorusGeometry(150, 10, 32, 100, Math.PI);
-    const torusGeometry2 = new THREE.TorusGeometry(150, 10, 32, 100, Math.PI);
+    const torusGeometry1 = new THREE.TorusGeometry(150, 5, 8, 50, Math.PI);
+    const torusGeometry2 = new THREE.TorusGeometry(100, 5, 8, 50, Math.PI);
+    const torusGeometry3 = new THREE.TorusGeometry(50, 5, 8, 50, Math.PI);
     const torusMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
     const torus1 = new THREE.Mesh(torusGeometry1, torusMaterial);
     const torus2 = new THREE.Mesh(torusGeometry2, torusMaterial);
+    const torus3 = new THREE.Mesh(torusGeometry3, torusMaterial);
 
-    torus1.position.y = -75;
-    torus2.position.y = 75;
-    torus1.rotation.x = Math.PI / 2;
-    torus2.rotation.x = Math.PI / 2;
+    torus1.position.y = 77;
+    torus2.position.y = 77;
+    torus3.position.y = -21;
+    torus1.rotation.x = 0;
+    torus2.rotation.x = 0;
+    torus3.rotation.x = Math.PI;
 
-    scene.add(torus1, torus2);
+    scene.add(torus1, torus2, torus3);
 
     const animate = () => {
       requestAnimationFrame(animate);
