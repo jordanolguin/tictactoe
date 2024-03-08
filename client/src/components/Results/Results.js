@@ -23,7 +23,7 @@ const Results = () => {
   };
 
   const handleGoHome = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   if (showPlayAgain) {

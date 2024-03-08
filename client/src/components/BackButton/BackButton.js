@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion, MotionConfig } from "framer-motion";
 import styles from "./BackButton.module.css";
 
 const BackButton = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isHover, setIsHover] = useState(false);
 
   const transition = { type: "spring", stiffness: 400, damping: 17 };
@@ -13,6 +14,10 @@ const BackButton = () => {
     hover: { scale: 1.5, backgroundColor: "#61dafb" },
     press: { scale: 1.4, backgroundColor: "#db07d1" },
   };
+
+  const buttonText = location.pathname.includes("/play")
+    ? "back to home"
+    : "to home";
 
   return (
     <div className={styles.backButtonContainer}>
@@ -26,9 +31,9 @@ const BackButton = () => {
           variants={buttonVariants}
           onHoverStart={() => setIsHover(true)}
           onHoverEnd={() => setIsHover(false)}
-          onTap={() => navigate("/")}
+          onTap={() => navigate("/home")}
         >
-          back to home
+          {buttonText}
         </motion.button>
       </MotionConfig>
     </div>
