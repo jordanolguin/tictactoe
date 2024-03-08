@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import Stats from "stats.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 const ThreeJSStar = () => {
@@ -28,9 +27,6 @@ const ThreeJSStar = () => {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableZoom = false;
     controls.update();
-
-    const stats = new Stats();
-    currentContainerRef.appendChild(stats.dom);
 
     const shape = new THREE.Shape();
     const outerRadius = 1;
@@ -85,7 +81,6 @@ const ThreeJSStar = () => {
       star.rotation.y += 0.01;
 
       renderer.render(scene, camera);
-      stats.update();
     };
 
     animate();
