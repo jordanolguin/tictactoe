@@ -41,7 +41,16 @@ function Home() {
         animate="visible"
         variants={containerVariants}
       >
-        <motion.h1 variants={itemVariants}>tic tac toe</motion.h1>
+        <motion.h1
+          variants={itemVariants}
+          style={{
+            color: "#ffffff",
+            textShadow:
+              "0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 5px rgba(255, 255, 255, 0.15)",
+          }}
+        >
+          tic tac toe
+        </motion.h1>
         <motion.div variants={itemVariants}>
           <LoadingScreen />
         </motion.div>

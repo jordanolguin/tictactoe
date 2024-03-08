@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useGame } from "../../contexts/GameContext";
+import styles from "./TurnIndicator.module.css";
 
 const TurnIndicator = () => {
   const { isXTurn, winner, isDraw } = useGame();
@@ -30,7 +31,7 @@ const TurnIndicator = () => {
         flexDirection: "column",
       }}
     >
-      <h3 style={{ margin: "0 auto" }}>
+      <h3 style={{ margin: "0 auto" }} className={styles.textColor}>
         {winner
           ? `Winner: ${winner}`
           : isDraw

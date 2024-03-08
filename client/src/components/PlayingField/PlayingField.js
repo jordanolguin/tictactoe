@@ -116,7 +116,7 @@ const PlayingField = () => {
         y1="50"
         x2="200"
         y2="550"
-        stroke="#000"
+        stroke="#fff"
         strokeWidth="5"
         variants={draw}
         custom={1}
@@ -126,7 +126,7 @@ const PlayingField = () => {
         y1="50"
         x2="400"
         y2="550"
-        stroke="#000"
+        stroke="#fff"
         strokeWidth="5"
         variants={draw}
         custom={1.5}
@@ -136,7 +136,7 @@ const PlayingField = () => {
         y1="200"
         x2="550"
         y2="200"
-        stroke="#000"
+        stroke="#fff"
         strokeWidth="5"
         variants={draw}
         custom={2}
@@ -146,7 +146,7 @@ const PlayingField = () => {
         y1="400"
         x2="550"
         y2="400"
-        stroke="#000"
+        stroke="#fff"
         strokeWidth="5"
         variants={draw}
         custom={2.5}
