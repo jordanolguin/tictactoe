@@ -8,6 +8,9 @@ const ThreeJSStar = () => {
 
   useEffect(() => {
     const scene = new THREE.Scene();
+
+    scene.background = new THREE.Color(0x1b1c1e);
+
     const camera = new THREE.PerspectiveCamera(
       55,
       window.innerWidth / window.innerHeight,
@@ -23,6 +26,7 @@ const ThreeJSStar = () => {
     currentContainerRef.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableZoom = false;
     controls.update();
 
     const stats = new Stats();
