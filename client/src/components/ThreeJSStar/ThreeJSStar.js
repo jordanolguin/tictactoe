@@ -101,7 +101,14 @@ const ThreeJSStar = () => {
     };
   }, []);
 
-  return <div ref={containerRef} />;
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+  };
+
+  return <div style={containerStyle} ref={containerRef} />;
 };
 
 export default ThreeJSStar;

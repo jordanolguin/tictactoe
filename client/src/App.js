@@ -8,8 +8,8 @@ import {
   useRoutes,
 } from "react-router-dom";
 import Home from "./pages/Home";
-import GamePlay from "./pages/GamePlay";
-import Landing from "./pages/Landing";
+import GamePlay from "./pages/GamePlay/GamePlay";
+import Landing from "./pages/Landing/Landing";
 import { GameProvider } from "./contexts/GameContext";
 
 function AppRoutes() {

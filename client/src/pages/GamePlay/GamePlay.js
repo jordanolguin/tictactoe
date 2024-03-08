@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useGame } from "../contexts/GameContext";
-import PlayingField from "../components/PlayingField/PlayingField";
-import BackButton from "../components/BackButton/BackButton";
-import TurnIndicator from "../components/TurnIndicator/TurnIndicator";
-import Results from "../components/Results/Results";
+import { useGame } from "../../contexts/GameContext";
+import PlayingField from "../../components/PlayingField/PlayingField";
+import BackButton from "../../components/BackButton/BackButton";
+import TurnIndicator from "../../components/TurnIndicator/TurnIndicator";
+import Results from "../../components/Results/Results";
 
 const pageVariants = {
   initial: { opacity: 0 },
