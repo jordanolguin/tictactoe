@@ -1,7 +1,7 @@
-import "./App.css";
-import * as React from "react";
 import { useEffect, useState } from "react";
+import * as React from "react";
 import { AnimatePresence } from "framer-motion";
+import "./App.css";
 import {
   BrowserRouter as Router,
   useLocation,
@@ -10,24 +10,24 @@ import {
 import Home from "./pages/Home";
 import GamePlay from "./pages/GamePlay/GamePlay";
 import Landing from "./pages/Landing/Landing";
+import Footer from "./components/Footer/Footer";
 import { GameProvider } from "./contexts/GameContext";
 
 function AppRoutes() {
-  const [firstVisit, setFirstVisit] = useState(false);
+  const [firstVisit, setFirstVisit] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
-    if (!hasVisited) {
-      setFirstVisit(true);
+    if (hasVisited) {
+      setFirstVisit(false);
+    } else {
       localStorage.setItem("hasVisited", "true");
     }
   }, []);
 
-  let initialElement = firstVisit ? <Landing /> : <Home />;
-
   const routes = useRoutes([
-    { path: "/", element: initialElement },
+    { path: "/", element: firstVisit ? <Landing /> : <Home /> },
     {
       path: "/play",
       element: (
@@ -49,10 +49,11 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <AppRoutes />
-      </Router>
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }

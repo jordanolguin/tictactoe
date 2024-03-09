@@ -1,6 +1,5 @@
 import ThreeJSStar from "../../components/ThreeJSStar/ThreeJSStar";
 import BackButton from "../../components/BackButton/BackButton";
-import Footer from "../../components/Footer/Footer";
 import "./Landing.css";
 
 const Landing = () => {
@@ -8,7 +7,6 @@ const Landing = () => {
     <div className="landingContainer">
       <ThreeJSStar />
       <BackButton />
-      <Footer />
     </div>
   );
 };
