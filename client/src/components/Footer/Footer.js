@@ -1,4 +1,5 @@
 import Logo from "../Logo/Logo";
+import VenmoRepo from "../VenmoRepo/VenmoRepo";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
@@ -9,10 +10,7 @@ const Footer = () => {
       </div>
       <p className={styles.p}>&copy; 2024</p>
       <div className={styles.links}>
-        <a href="your-repo-url" style={{ marginRight: "10px" }}>
-          Repo
-        </a>
-        <a href="your-venmo-link">Venmo</a>
+        <VenmoRepo />
       </div>
     </footer>
   );
