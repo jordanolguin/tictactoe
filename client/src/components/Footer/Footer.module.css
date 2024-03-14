@@ -7,6 +7,10 @@
   border-top: 3px dotted #0099ff;
 }
 
+.footer.light {
+  background-color: #f0f0f0;
+}
+
 .logo {
   display: flex;
   align-items: center;
