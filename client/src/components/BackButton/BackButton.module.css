@@ -1,10 +1,8 @@
 .backButtonContainer {
-  background-color: #1b1c1e;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
 }
 
 .button {
