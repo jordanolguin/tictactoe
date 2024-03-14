@@ -1,13 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faMoneyBill } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 const VenmoRepo = () => {
   const [isPressed, setIsPressed] = useState({
     github: false,
     dollar: false,
   });
+
+  const [showTooltip, setShowTooltip] = useState({
+    github: false,
+    dollar: false,
+  });
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setShowTooltip((prevState) => ({ ...prevState, github: true }));
+    }, 10000);
+
+    const timer2 = setTimeout(() => {
+      setShowTooltip((prevState) => ({ github: false, dollar: true }));
+    }, 15000);
+
+    const timer3 = setTimeout(() => {
+      setShowTooltip((prevState) => ({ github: false, dollar: false }));
+    }, 20000);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, []);
 
   const containerStyle = {
     display: "flex",
@@ -16,6 +42,7 @@ const VenmoRepo = () => {
     width: "200px",
     height: "150px",
     backgroundColor: "#1b1c1e",
+    position: "relative",
   };
 
   const iconStyle = {
@@ -37,10 +64,48 @@ const VenmoRepo = () => {
     transition: "box-shadow 0.2s ease-in-out",
   });
 
+  const tooltipStyle = {
+    position: "absolute",
+    top: "-2px",
+    fontSize: "12px",
+    background: "white",
+    borderRadius: "6px",
+    padding: "5px",
+    color: "#1b1c1e",
+    boxShadow: "0px 0px 5px rgba(0,0,0,0.2)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
+
+  const triangleStyle = {
+    width: "0",
+    height: "0",
+    borderLeft: "5px solid transparent",
+    borderRight: "5px solid transparent",
+    borderTop: "5px solid white",
+    position: "absolute",
+    top: "100%",
+  };
+
   const handleButtonClick = (button) => {
     setIsPressed((prevState) => ({
       ...prevState,
       [button]: !prevState[button],
+    }));
+  };
+
+  const handleMouseEnter = (button) => {
+    setShowTooltip((prevState) => ({
+      ...prevState,
+      [button]: true,
+    }));
+  };
+
+  const handleMouseLeave = (button) => {
+    setShowTooltip((prevState) => ({
+      ...prevState,
+      [button]: false,
     }));
   };
 
@@ -50,21 +115,47 @@ const VenmoRepo = () => {
         style={getButtonStyle(isPressed.github)}
         onMouseDown={() => handleButtonClick("github")}
         onMouseUp={() => handleButtonClick("github")}
-        onMouseLeave={() => isPressed.github && handleButtonClick("github")}
+        onMouseEnter={() => handleMouseEnter("github")}
+        onMouseLeave={() => handleMouseLeave("github")}
         onClick={() =>
           window.open("https://github.com/jordanolguin/tictactoe", "_blank")
         }
       >
         <FontAwesomeIcon icon={faGithub} style={iconStyle} />
+        {showTooltip.github && (
+          <motion.div
+            style={{ ...tooltipStyle, left: "10px" }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.5 }}
+          >
+            Check out this repo!
+            <div style={triangleStyle}></div>
+          </motion.div>
+        )}
       </div>
       <div
         style={getButtonStyle(isPressed.dollar)}
         onMouseDown={() => handleButtonClick("dollar")}
         onMouseUp={() => handleButtonClick("dollar")}
-        onMouseLeave={() => isPressed.dollar && handleButtonClick("dollar")}
+        onMouseEnter={() => handleMouseEnter("dollar")}
+        onMouseLeave={() => handleMouseLeave("dollar")}
         onClick={() => window.open("https://venmo.com/jordanolguin", "_blank")}
       >
         <FontAwesomeIcon icon={faMoneyBill} style={iconStyle} />
+        {showTooltip.dollar && (
+          <motion.div
+            style={{ ...tooltipStyle, right: "10px" }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.5 }}
+          >
+            Buy me a beer!
+            <div style={triangleStyle}></div>
+          </motion.div>
+        )}
       </div>
     </div>
   );
