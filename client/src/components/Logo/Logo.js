@@ -2,15 +2,17 @@ import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
+import { useTheme } from "../../contexts/ThemeContext";
 
 const Logo = () => {
+  const { isDark } = useTheme();
   const mountRef = useRef(null);
 
   useEffect(() => {
     const mount = mountRef.current;
     const scene = new THREE.Scene();
 
-    scene.background = new THREE.Color(0x1b1c1e);
+    scene.background = new THREE.Color(isDark ? 0x1b1c1e : 0xf0f0f0);
 
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     camera.position.z = 300;
@@ -85,7 +87,7 @@ const Logo = () => {
         mount.removeChild(renderer.domElement);
       }
     };
-  }, []);
+  }, [isDark]);
 
   return <div ref={mountRef} style={{ flex: "0 1 auto" }} />;
 };
