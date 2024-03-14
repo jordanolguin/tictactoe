@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useTheme } from "../../contexts/ThemeContext";
 import { useGame } from "../../contexts/GameContext";
 import "./PlayingField.css";
 
 const PlayingField = () => {
+  const { isDark } = useTheme();
   const { board, handleClick, winningCombo } = useGame();
 
   const handlePlayerMove = (i) => {
@@ -116,7 +118,7 @@ const PlayingField = () => {
         y1="50"
         x2="200"
         y2="550"
-        stroke="#fff"
+        stroke={isDark ? "#f0f0f0" : "#1b1c1e"}
         strokeWidth="5"
         variants={draw}
         custom={1}
@@ -126,7 +128,7 @@ const PlayingField = () => {
         y1="50"
         x2="400"
         y2="550"
-        stroke="#fff"
+        stroke={isDark ? "#f0f0f0" : "#1b1c1e"}
         strokeWidth="5"
         variants={draw}
         custom={1.5}
@@ -136,7 +138,7 @@ const PlayingField = () => {
         y1="200"
         x2="550"
         y2="200"
-        stroke="#fff"
+        stroke={isDark ? "#f0f0f0" : "#1b1c1e"}
         strokeWidth="5"
         variants={draw}
         custom={2}
@@ -146,7 +148,7 @@ const PlayingField = () => {
         y1="400"
         x2="550"
         y2="400"
-        stroke="#fff"
+        stroke={isDark ? "#f0f0f0" : "#1b1c1e"}
         strokeWidth="5"
         variants={draw}
         custom={2.5}

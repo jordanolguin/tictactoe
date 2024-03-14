@@ -50,6 +50,7 @@ const VenmoRepo = () => {
 
   const iconStyle = {
     fontSize: "30px",
+    color: isDark ? "#000" : "#1b1c1e",
     cursor: "pointer",
   };
 
