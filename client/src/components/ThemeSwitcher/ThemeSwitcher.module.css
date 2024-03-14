@@ -1,7 +1,7 @@
 .switch {
   width: 160px;
   height: 80px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 50px;
   display: flex;
   justify-content: flex-start;
@@ -11,7 +11,8 @@
 }
 
 .dark {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.4);
+
   justify-content: flex-end;
 }
 

@@ -12,7 +12,7 @@ import GamePlay from "./pages/GamePlay/GamePlay";
 import Landing from "./pages/Landing/Landing";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import { ThemeProvider } from "./contexts/ThemeContext";
+import { ThemeProvider, useTheme } from "./contexts/ThemeContext";
 import { GameProvider } from "./contexts/GameContext";
 
 function AppRoutes() {
@@ -49,16 +49,28 @@ function AppRoutes() {
   );
 }
 
-export default function App() {
+// Main App component
+function AppWrapper() {
   return (
     <Router>
       <ThemeProvider>
-        <div className="App">
-          <Header />
-          <AppRoutes />
-          <Footer />
-        </div>
+        <App />
       </ThemeProvider>
     </Router>
   );
 }
+
+// Moved useTheme and conditional class application to a separate component
+function App() {
+  const { isDark } = useTheme(); // useTheme now works because it's within the ThemeProvider context
+
+  return (
+    <div className={`App ${isDark ? "dark" : "light"}`}>
+      <Header />
+      <AppRoutes />
+      <Footer />
+    </div>
+  );
+}
+
+export default AppWrapper; // Export the wrapper component instead

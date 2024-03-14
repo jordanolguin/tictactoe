@@ -9,4 +9,13 @@
   text-align: center;
   background: #1b1c1e;
   height: 100vh;
+  transition: background 0.5s;
+}
+
+.dark {
+  background: #1b1c1e;
+}
+
+.light {
+  background: #f0f0f0;
 }
