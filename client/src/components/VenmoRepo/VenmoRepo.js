@@ -3,8 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { useTheme } from "../../contexts/ThemeContext";
 
 const VenmoRepo = () => {
+  const { isDark } = useTheme();
+
   const [isPressed, setIsPressed] = useState({
     github: false,
     dollar: false,
@@ -41,7 +44,7 @@ const VenmoRepo = () => {
     alignItems: "center",
     width: "200px",
     height: "150px",
-    backgroundColor: "#1b1c1e",
+    backgroundColor: isDark ? "#1b1c1e" : "#f0f0f0",
     position: "relative",
   };
 
@@ -56,10 +59,14 @@ const VenmoRepo = () => {
     alignItems: "center",
     borderRadius: "10px",
     padding: "20px",
-    backgroundColor: "#1b1c1e",
+    backgroundColor: isDark ? "#1b1c1e" : "#f0f0f0",
     boxShadow: pressed
-      ? `inset 8px 8px 15px #0a0b0c, inset -8px -8px 15px #2c2d2f`
-      : `8px 8px 15px #0a0b0c, -8px -8px 15px #2c2d2f`,
+      ? isDark
+        ? `inset 8px 8px 15px #0a0b0c, inset -8px -8px 15px #2c2d2f`
+        : `inset 8px 8px 15px #d1d1d1, inset -8px -8px 15px #ffffff`
+      : isDark
+      ? `8px 8px 15px #0a0b0c, -8px -8px 15px #2c2d2f`
+      : `8px 8px 15px #d1d1d1, -8px -8px 15px #ffffff`,
     cursor: "pointer",
     transition: "box-shadow 0.2s ease-in-out",
   });
@@ -68,10 +75,10 @@ const VenmoRepo = () => {
     position: "absolute",
     top: "-2px",
     fontSize: "12px",
-    background: "white",
+    background: isDark ? "#f0f0f0" : "#1b1c1e",
     borderRadius: "6px",
     padding: "5px",
-    color: "#1b1c1e",
+    color: isDark ? "#1b1c1e" : "#f0f0f0",
     boxShadow: "0px 0px 5px rgba(0,0,0,0.2)",
     display: "flex",
     flexDirection: "column",
@@ -83,7 +90,7 @@ const VenmoRepo = () => {
     height: "0",
     borderLeft: "5px solid transparent",
     borderRight: "5px solid transparent",
-    borderTop: "5px solid white",
+    borderTop: `5px solid ${isDark ? "#f0f0f0" : "#1b1c1e"}`,
     position: "absolute",
     top: "100%",
   };
