@@ -7,12 +7,12 @@
   justify-content: flex-start;
   padding: 10px;
   cursor: pointer;
+  transition: background-color 0.5s, justify-content 0.5s;
 }
 
-.switch[data-isDark="true"] {
+.dark {
   background-color: rgba(0, 0, 0, 0.4);
   justify-content: flex-end;
-  transition: background-color 0.5s;
 }
 
 .handle {
@@ -20,4 +20,5 @@
   height: 80px;
   background-color: #fff;
   border-radius: 40px;
+  transition: background-color 0.5s;
 }

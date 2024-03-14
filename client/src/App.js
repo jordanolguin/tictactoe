@@ -12,6 +12,7 @@ import GamePlay from "./pages/GamePlay/GamePlay";
 import Landing from "./pages/Landing/Landing";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import { ThemeProvider } from "./contexts/ThemeContext";
 import { GameProvider } from "./contexts/GameContext";
 
 function AppRoutes() {
@@ -51,11 +52,13 @@ function AppRoutes() {
 export default function App() {
   return (
     <Router>
-      <div className="App">
-        <Header />
-        <AppRoutes />
-        <Footer />
-      </div>
+      <ThemeProvider>
+        <div className="App">
+          <Header />
+          <AppRoutes />
+          <Footer />
+        </div>
+      </ThemeProvider>
     </Router>
   );
 }
