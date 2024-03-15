@@ -49,7 +49,6 @@ function AppRoutes() {
   );
 }
 
-// Main App component
 function AppWrapper() {
   return (
     <Router>
@@ -60,9 +59,8 @@ function AppWrapper() {
   );
 }
 
-// Moved useTheme and conditional class application to a separate component
 function App() {
-  const { isDark } = useTheme(); // useTheme now works because it's within the ThemeProvider context
+  const { isDark } = useTheme();
 
   return (
     <div className={`App ${isDark ? "dark" : "light"}`}>
@@ -73,4 +71,4 @@ function App() {
   );
 }
 
-export default AppWrapper; // Export the wrapper component instead
+export default AppWrapper;

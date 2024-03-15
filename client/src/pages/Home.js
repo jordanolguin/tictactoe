@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 import PlayButton from "../components/PlayButton/PlayButton";
+import { useTheme } from "../contexts/ThemeContext";
 
 const visible = { opacity: 1, transition: { duration: 0.5 } };
 
@@ -27,6 +28,8 @@ const pageTransition = {
 };
 
 function Home() {
+  const { isDark } = useTheme();
+
   return (
     <motion.div
       initial="initial"
@@ -36,7 +39,7 @@ function Home() {
       transition={pageTransition}
     >
       <motion.div
-        className="App"
+        className={`App ${isDark ? "dark" : "light"}`}
         initial="hidden"
         animate="visible"
         variants={containerVariants}
