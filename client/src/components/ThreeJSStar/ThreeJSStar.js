@@ -1,14 +1,16 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { useTheme } from "../../contexts/ThemeContext";
 
 const ThreeJSStar = () => {
+  const { isDark } = useTheme();
   const containerRef = useRef();
 
   useEffect(() => {
     const scene = new THREE.Scene();
 
-    scene.background = new THREE.Color(0x1b1c1e);
+    scene.background = new THREE.Color(isDark ? 0x1b1c1e : 0xf0f0f0);
 
     const camera = new THREE.PerspectiveCamera(
       55,
@@ -99,7 +101,7 @@ const ThreeJSStar = () => {
         currentContainerRef.removeChild(renderer.domElement);
       }
     };
-  }, []);
+  }, [isDark]);
 
   const containerStyle = {
     display: "flex",
