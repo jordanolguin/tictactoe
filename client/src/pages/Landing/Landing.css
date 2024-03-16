@@ -4,5 +4,12 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #1b1c1e;
+}
+
+.dark {
+  background: #1b1c1e;
+}
+
+.light {
+  background: #f0f0f0;
 }
