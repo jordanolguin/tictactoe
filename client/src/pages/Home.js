@@ -37,6 +37,7 @@ function Home() {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
+      style={{ background: isDark ? "#1b1c1e" : "#f0f0f0" }}
     >
       <motion.div
         className={`App ${isDark ? "dark" : "light"}`}

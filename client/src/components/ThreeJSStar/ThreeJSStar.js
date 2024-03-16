@@ -107,7 +107,8 @@ const ThreeJSStar = () => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    height: "60vh",
+    margin: "2rem",
   };
 
   return <div style={containerStyle} ref={containerRef} />;

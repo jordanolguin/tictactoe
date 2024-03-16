@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useGame } from "../../contexts/GameContext";
+import { useTheme } from "../../contexts/ThemeContext";
 import PlayingField from "../../components/PlayingField/PlayingField";
 import BackButton from "../../components/BackButton/BackButton";
 import TurnIndicator from "../../components/TurnIndicator/TurnIndicator";
@@ -29,8 +30,8 @@ const itemVariants = {
 };
 
 function GamePlay() {
+  const { isDark } = useTheme();
   const { winner, isDraw } = useGame();
-
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [moveCount, setMoveCount] = useState(0);
 
@@ -49,6 +50,7 @@ function GamePlay() {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
+      style={{ background: isDark ? "#1b1c1e" : "#f0f0f0" }}
     >
       <motion.div
         className="GamePlay"
