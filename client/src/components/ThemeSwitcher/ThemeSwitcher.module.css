@@ -1,6 +1,6 @@
 .switch {
-  width: 160px;
-  height: 80px;
+  width: 96px;
+  height: 48px;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 50px;
   display: flex;
@@ -12,13 +12,12 @@
 
 .dark {
   background-color: rgba(255, 255, 255, 0.4);
-
   justify-content: flex-end;
 }
 
 .handle {
-  width: 80px;
-  height: 80px;
+  width: 48px;
+  height: 48px;
   background-color: #fff;
   border-radius: 40px;
   transition: background-color 0.5s;
