@@ -20,6 +20,7 @@ const Results = () => {
 
   const handleRefresh = () => {
     resetGame();
+    navigate("/landing");
   };
 
   const handleGoHome = () => {
