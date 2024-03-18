@@ -45,6 +45,7 @@ const VenmoRepo = () => {
     width: "200px",
     height: "150px",
     backgroundColor: isDark ? "#1b1c1e" : "#f0f0f0",
+    transition: "background 0.5s",
     position: "relative",
   };
 

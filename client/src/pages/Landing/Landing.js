@@ -33,8 +33,12 @@ const Landing = () => {
   return (
     <div className={`landingContainer ${isDark ? "dark" : "light"}`}>
       <ThreeJSStar />
-      <h1 className="message">{typedMessage}</h1>
-      {showCountdown && <h2 className="countdown">{countdown}</h2>}
+      <h1 className={`message ${isDark ? "dark" : "light"}`}>{typedMessage}</h1>
+      {showCountdown && (
+        <h2 className={`countdown ${isDark ? "dark" : "light"}`}>
+          {countdown}
+        </h2>
+      )}
       <BackButton />
     </div>
   );

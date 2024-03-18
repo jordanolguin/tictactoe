@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  transition: background-color 0.5s;
   background-color: #1b1c1e;
   border-top: 3px dotted #0099ff;
 }

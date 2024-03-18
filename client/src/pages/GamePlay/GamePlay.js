@@ -50,7 +50,10 @@ function GamePlay() {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ background: isDark ? "#1b1c1e" : "#f0f0f0" }}
+      style={{
+        background: isDark ? "#1b1c1e" : "#f0f0f0",
+        transition: "background 0.5s",
+      }}
     >
       <motion.div
         className="GamePlay"
@@ -61,9 +64,10 @@ function GamePlay() {
         <motion.h1
           variants={itemVariants}
           style={{
-            color: "#ffffff",
-            textShadow:
-              "0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 5px rgba(255, 255, 255, 0.15)",
+            color: isDark ? "#ffffff" : "#1b1c1e",
+            textShadow: isDark
+              ? "0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 5px rgba(255, 255, 255, 0.15)"
+              : "0px 1px 3px rgba(255, 255, 255, 0.4), 0px 0px 5px rgba(0, 0, 0, 0.15)",
           }}
         >
           tap a square to play!
