@@ -14,6 +14,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { ThemeProvider, useTheme } from "./contexts/ThemeContext";
 import { GameProvider } from "./contexts/GameContext";
+import { AudioProvider } from "./contexts/AudioContext";
 
 function AppRoutes() {
   const [firstVisit, setFirstVisit] = useState(true);
@@ -53,7 +54,9 @@ function AppWrapper() {
   return (
     <Router>
       <ThemeProvider>
-        <App />
+        <AudioProvider>
+          <App />
+        </AudioProvider>
       </ThemeProvider>
     </Router>
   );
