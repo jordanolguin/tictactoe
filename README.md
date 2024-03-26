@@ -4,7 +4,7 @@
 
 Welcome to a visually captivating and sonically immersive version of Tic Tac Toe! Far from the standard game you know, this desktop-optimized experience combines stunning animations, interactive 3D objects crafted with Three.js, an original soundtrack to elevate your strategic moves, and a theme switcher to toggle between light and dark modes. Immerse yourself in a game where technology meets creativity, providing not just a game, but an experience.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/26cb7dc9-832e-453b-a2e4-0b4f25c5f567/deploy-status)](https://app.netlify.com/sites/tictactoh/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c43b170d-bec4-4e54-ab6c-372e734e7c2e/deploy-status)](https://app.netlify.com/sites/tictactoe-888/deploys)
 
 ![Home Page](/client/public/screenshots/homepage.png "Home Page")
 _Home Page - Choose your side and embark on a gaming adventure unlike any other, optimized for desktop for the ultimate experience._
@@ -30,7 +30,7 @@ _Winner Screen - Revel in your victory with dynamic visuals and a triumphant ori
 
 ## Live Experience
 
-Why wait? Jump straight into the game by visiting [Tic Tac Toe Live URL](#). This hosted version provides instant access, letting you dive into the enhanced Tic Tac Toe experience without delay. Optimized for desktop use.
+Why wait? Jump straight into the game by visiting [Tic Tac Toe Live URL](https://tictactoe-888.netlify.app/). This hosted version provides instant access, letting you dive into the enhanced Tic Tac Toe experience without delay. Optimized for desktop use.
 
 ![Loading Screen](/client/public/screenshots/loading.png "Loading Screen")
 _Loading Screen - Feel the anticipation build with each game load, crafted to impress on desktop._
