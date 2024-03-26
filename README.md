@@ -4,6 +4,8 @@
 
 Welcome to a visually captivating and sonically immersive version of Tic Tac Toe! This isn't just your standard game; it's a desktop-optimized experience that brings together stunning animations, interactive 3D objects crafted with Three.js, an original soundtrack to accompany your strategic moves, and a theme switcher for light and dark mode enthusiasts.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/26cb7dc9-832e-453b-a2e4-0b4f25c5f567/deploy-status)](https://app.netlify.com/sites/tictactoh/deploys)
+
 ![Home Page](/client/public/screenshots/hompage.png "Home Page")
 _Home Page - Choose your side and start the game on your desktop for the best experience._
 
