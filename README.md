@@ -16,6 +16,7 @@ _Home Page - Choose your side and start the game on your desktop for the best ex
 - **Original Soundtrack**: Immerse yourself in the game with music I personally composed to elevate your experience.
 - **Theme Switching**: Adapt the visual theme to suit your mood or preference at any time.
 - **Responsive and Animated UI**: Designed primarily for desktop to ensure a smooth and responsive interaction, complete with engaging animations.
+- **Tech Stack**: Built using React with useContext for state management, Framer Motion for animations, Three.js for 3D components, FontAwesome for icons, and styled with a neumorphism design approach for a soft, extruded plastic look.
 
 ![Gameplay](/client/public/screenshots/gameplay.png "Gameplay")
 _Strategize and enjoy the immersive music and visuals on your desktop._
