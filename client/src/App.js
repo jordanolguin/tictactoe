@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import * as React from "react";
 import { AnimatePresence } from "framer-motion";
 import "./App.css";
@@ -17,20 +16,10 @@ import { GameProvider } from "./contexts/GameContext";
 import { AudioProvider } from "./contexts/AudioContext";
 
 function AppRoutes() {
-  const [firstVisit, setFirstVisit] = useState(true);
   const location = useLocation();
 
-  useEffect(() => {
-    const hasVisited = localStorage.getItem("hasVisited");
-    if (hasVisited) {
-      setFirstVisit(false);
-    } else {
-      localStorage.setItem("hasVisited", "true");
-    }
-  }, []);
-
   const routes = useRoutes([
-    { path: "/", element: firstVisit ? <Landing /> : <Home /> },
+    { path: "/", element: <Home /> },
     {
       path: "/play",
       element: (

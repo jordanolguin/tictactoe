@@ -10,12 +10,9 @@ const Landing = () => {
   const navigate = useNavigate();
   const { isDark } = useTheme();
   const [countdown, setCountdown] = useState(10);
-  const firstVisit = !localStorage.getItem("hasVisited");
   const [showCountdown, setShowCountdown] = useState(false);
 
-  const initialMessage = firstVisit
-    ? "Welcome to Tic Tac Toe!"
-    : "New game in:";
+  const initialMessage = "New game in:";
   const typedMessage = useTypingEffect(initialMessage, 150, () => {
     setShowCountdown(true);
   });
