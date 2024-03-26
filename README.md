@@ -1,10 +1,11 @@
 # Tic Tac Toe
 
 ## Overview
+
 Welcome to a visually captivating and sonically immersive version of Tic Tac Toe! This isn't just your standard game; it's a desktop-optimized experience that brings together stunning animations, interactive 3D objects crafted with Three.js, an original soundtrack to accompany your strategic moves, and a theme switcher for light and dark mode enthusiasts.
 
-![Home Page](path/to/homepage_screenshot.png "Home Page")
-*Home Page - Choose your side and start the game on your desktop for the best experience.*
+![Home Page](/client/public/screenshots/hompage.png "Home Page")
+_Home Page - Choose your side and start the game on your desktop for the best experience._
 
 ## Features
 
@@ -14,20 +15,22 @@ Welcome to a visually captivating and sonically immersive version of Tic Tac Toe
 - **Theme Switching**: Adapt the visual theme to suit your mood or preference at any time.
 - **Responsive and Animated UI**: Designed primarily for desktop to ensure a smooth and responsive interaction, complete with engaging animations.
 
-![Gameplay](path/to/gameplay_screenshot.png "Gameplay")
-*Strategize and enjoy the immersive music and visuals on your desktop.*
+![Gameplay](/client/public/screenshots/gameplay.png "Gameplay")
+_Strategize and enjoy the immersive music and visuals on your desktop._
 
 ## Original Music Composition
+
 This game features an original soundtrack that I personally composed to enhance the gaming experience. The composition is designed to keep you engaged and entertained, adding a unique touch that sets this Tic Tac Toe apart from others.
 
-![Winner Screen](path/to/winner_screenshot.png "Winner Screen")
-*Celebrate your victory with dynamic visuals and triumphant music.*
+![Winner Screen](/client/public/screenshots/winner.png "Winner Screen")
+_Celebrate your victory with dynamic visuals and triumphant music._
 
 ## Live Experience
+
 Dive into the game directly by visiting [Tic Tac Toe Live URL](#). This hosted version allows instant access to the game, enabling you to start playing without delay, optimally on a desktop.
 
-![Loading Screen](path/to/loading_screenshot.png "Loading Screen")
-*The anticipation builds with each load, best experienced on a desktop.*
+![Loading Screen](/client/public/screenshots/loading.png "Loading Screen")
+_The anticipation builds with each load, best experienced on a desktop._
 
 ## How to Play
 
@@ -38,9 +41,11 @@ Dive into the game directly by visiting [Tic Tac Toe Live URL](#). This hosted v
 - Enjoy the original soundtrack that accompanies your gameplay.
 
 ## Feeling Generous?
+
 Found yourself enjoying the game? Feel like supporting the creator? Slide over to my Venmo (@jordanolguin) to buy me a beer or simply show your appreciation. Every little bit helps and encourages me to create more!
 
 ## Contributions
+
 Feel free to contribute to the game's future development. Suggestions for features or improvements are always welcome. Fork the project, make your changes, and submit a pull request to share your ideas.
 
 ## Acknowledgements
@@ -49,4 +54,5 @@ Feel free to contribute to the game's future development. Suggestions for featur
 - **React Community**: For maintaining and advancing the library that made this game possible.
 
 ## License
+
 This project is open-sourced under the MIT License. See the [LICENSE](LICENSE) file for more details.
